@@ -4,7 +4,7 @@
  */
 import java.util.Scanner;
 
-public class Main {
+public class firstday {
 
   static void cw313() {
       //3.13
