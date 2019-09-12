@@ -29,9 +29,8 @@ public class Main {
       System.out.println("Invalid number");
     }
 	}
-  /* Gets 3 numbers and gets the average of those numbers */
+  /* Gets 3 numbers and gets the average of those numbers (2.2)*/
 	static void threenumberaverage() {
-		//2.2
 		Scanner obj = new Scanner(System.in);
 		System.out.println("Enter first number");
 		int num1 = obj.nextInt();
@@ -42,9 +41,8 @@ public class Main {
 		double avg = (num1 + num2 + num3)/3;
 		System.out.println(avg);
 	}
-  /* Gets 2 (x, y) coordinates and finds the distance between them */
+  /* Gets 2 (x, y) coordinates and finds the distance between them (2.8)*/
 	static void twopointdistance() {
-		//2.8
 		Scanner obj = new Scanner(System.in);
 		System.out.println("Enter x_1");
 		int x1 = obj.nextInt();
@@ -57,9 +55,8 @@ public class Main {
 		double distance = Math.sqrt(Math.pow(x2 - x1,2) + Math.pow(y2 - y1,2));
 		System.out.println(distance);
 	}
-  /* Gets a string and prints each character on a new line */
+  /* Gets a string and prints each character on a new line (3.5)*/
 	static void stringtonewlinechar() {
-		//3.5
     Scanner obj = new Scanner(System.in);
     System.out.println("Enter string");
     String str = obj.nextLine();
@@ -68,9 +65,8 @@ public class Main {
 }
 
 	}
-  /* Prints a 12 x 12 multiplication table */
+  /* Prints a 12 x 12 multiplication table (3.7)*/
 	static void multiplicationtable() {
-		//3.7
 		for (int i = 0; i <= 12; i++) {
 			for (int j = 0; j <= 12; j++) {
 				System.out.print("[" + i*j + "]");
