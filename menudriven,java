@@ -2,6 +2,7 @@
  * 9/11/2019
  * Menu Driven Program
  */
+ 
 import java.util.Scanner;
 
 public class menudriven {
@@ -65,9 +66,27 @@ public class menudriven {
         Scanner obj = new Scanner(System.in);
         System.out.println("Enter string");
         String str = obj.nextLine();
-        for (int i = 0;i < str.length(); i++ ) {
+
+        //for loop
+        for (int i = 0; i < str.length(); i++ ) {
             System.out.println(str.charAt(i));
         }
+        System.out.println();
+
+        //while loop
+        int j = 0;
+        while (j < str.length()) {
+            System.out.println(str.charAt(j));
+            j++;
+        }
+        System.out.println();
+
+        //do while loop
+        int k = 0;
+        do {
+            System.out.println(str.charAt(k));
+            k++;
+        } while (k < str.length());
 
     }
     /* Prints a 12 x 12 multiplication table (3.7)*/
@@ -81,3 +100,5 @@ public class menudriven {
 
     }
 }
+
+
