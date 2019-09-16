@@ -67,32 +67,37 @@ public class menudriven {
     /* Gets a string and prints each character on a new line (3.5)*/
     static void stringtonewlinechar() {
         Scanner obj = new Scanner(System.in);
-        System.out.println("Enter string");
+        System.out.println("Enter string (for loop)");
         String str = obj.nextLine();
 
         //for loop
-        System.out.println("For Loop");
         for (int i = 0; i < str.length(); i++ ) {
             System.out.println(str.charAt(i));
         }
         System.out.println();
 
+        Scanner obj1 = new Scanner(System.in);
+        System.out.println("Enter string (while loop)");
+        String str1 = obj.nextLine();
+        
         //while loop
-        System.out.println("While Loop");
         int j = 0;
-        while (j < str.length()) {
-            System.out.println(str.charAt(j));
+        while (j < str1.length()) {
+            System.out.println(str1.charAt(j));
             j++;
         }
         System.out.println();
 
+        Scanner obj2 = new Scanner(System.in);
+        System.out.println("Enter string (do while loop)");
+        String str2 = obj.nextLine();
+        
         //do while loop
-        System.out.println("Do While Loop");
         int k = 0;
         do {
-            System.out.println(str.charAt(k));
+            System.out.println(str2.charAt(k));
             k++;
-        } while (k < str.length());
+        } while (k < str2.length());
         menu();
     }
     /* Prints a 12 x 12 multiplication table (3.7)*/
