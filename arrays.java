@@ -16,9 +16,10 @@ public class arrays {
     		int grade = obj.nextInt();
     		grades[i] = grade;	
     	}
-    	
+    	System.out.println("Name     Grade");
     	for (int i = 0; i < 3; i++) {
-    		System.out.println(names[i] + " " + grades[i]);
+        		System.out.println(names[i] + " " + grades[i]);
     	}
+    	
     }
 }
