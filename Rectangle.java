@@ -29,4 +29,15 @@ public class Rectangle {
 	public void setWidth(double w) {
 		width = w;
 	}
+	
+	public static String toString(double l, double w) {
+		return("length: " + l + ", width: " + w);
+				
+	}
+	
+	public static boolean equal(double l, double w) {
+		if (l )
+				
+	}
+	
 }
