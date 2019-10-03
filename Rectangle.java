@@ -30,12 +30,12 @@ public class Rectangle {
 		width = w;
 	}
 	
-	public static String toString(double l, double w) {
+	public String toString() {
 		return("length: " + l + ", width: " + w);
 				
 	}
 	
-	public static boolean equal(double l, double w) {
+	public boolean equal(double l, double w) {
 		if (l )
 				
 	}
