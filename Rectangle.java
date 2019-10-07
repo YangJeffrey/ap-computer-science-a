@@ -1,7 +1,5 @@
 package mp1;
 
-package com.company;
-
 public class Rectangle {
     //data members
     private double length;
@@ -18,11 +16,11 @@ public class Rectangle {
 
     /* modifier methods for each data member */
     public void setlength(double l) {
-        l = length;
+        length = l;
     }
 
     public void setwidth(double w) {
-        w = width;
+        width = w;
     }
 
     /* constructor receives initializes data members */
@@ -36,17 +34,16 @@ public class Rectangle {
     public Rectangle() {
         length = 0;
         width = 0;
-        //setWidth(0);
     }
 
     /* Override the toString method to print length and width with labels */
-    public String toString(double l, double w) {
-        return("length: " + l + ", width: " + w);
+    public String toString() {
+        return("length: " + length + ", width: " + width);
     }
 
     /* Override the equals method determine if objects are equal if length and width are equal */
-    public boolean equals(double l, double w) {
-        if (l == w) {
+    public boolean equals(Rectangle r) {
+        if (r.getlength() == length && r.getwidth() == width) {
             return true;
         } else {
             return false;
@@ -54,12 +51,12 @@ public class Rectangle {
     }
 
     /* Calculates the area of the rectangle */
-    public static double area(double l, double w) {
-        return (l*w);
+    public double area() {
+        return (length*width);
     }
 
     /* Calculates the perimeter of the rectangle */
-    public static double perimeter(double l, double w) {
-        return (2*l + 2*w);
+    public double perimeter() {
+        return (2*length + 2*width);
     }
 }
