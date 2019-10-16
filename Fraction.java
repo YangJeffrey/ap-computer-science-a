@@ -1,16 +1,19 @@
 package mp1;
 
+/* Fraction Class has a numerator and denominator and can add, subtract, multiply, or divide 2 fractions */
 public class Fraction {
+	
+	//Data members include numerator and denominator
 	private int numerator;
 	private int denominator;
 	
-	//constructor
+	/* Constructor initializes numerator and denominator */
 	public Fraction(int n, int d) {
 		numerator = n;
 		denominator = d;
 	}
 	
-	//overloaded constructor
+	/* Overloaded constructor initializes numerator and denominator */
 	public Fraction(Fraction f) {
 		numerator = f.getnumerator();
 		denominator = f.getdenominator();
