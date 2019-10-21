@@ -2,9 +2,8 @@ package mp1;
 
 public class FractionDriver {
 	public static void main(String[] args) {
-		Fraction a1 = new Fraction(1, 2);
-		Fraction a2 = new Fraction (a1);
-		Fraction b = new Fraction(4,5);
+		Fraction a1 = new Fraction(4, 8);
+		Fraction b = new Fraction(1,3);
 		
 		System.out.println(a1.getnumerator());
 		System.out.println(a1.getdenominator());
@@ -14,11 +13,6 @@ public class FractionDriver {
 		System.out.println(a1.toString());
 		System.out.println(b.toString());
 		
-		if (a1.equals(a2)) {
-			System.out.println("a1 = a2");
-		} else {
-			System.out.println("a1 != a2");
-		}
 		if (a1.equals(b)) {
 			System.out.println("a1 = b");
 		} else {
