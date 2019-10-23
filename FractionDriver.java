@@ -1,9 +1,11 @@
 package mp1;
 
+package stuff;
+
 public class FractionDriver {
 	public static void main(String[] args) {
-		Fraction a1 = new Fraction(4, 8);
-		Fraction b = new Fraction(1,3);
+		Fraction a1 = new Fraction(-4, 16);
+		Fraction b = new Fraction(-3, -4);
 		
 		System.out.println(a1.getnumerator());
 		System.out.println(a1.getdenominator());
