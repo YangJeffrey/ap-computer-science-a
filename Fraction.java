@@ -1,5 +1,3 @@
-package mp1;
-
 /* Fraction Class has a numerator and denominator and can simplify two fractions, then add, subtract, multiply, or divide them. */
 public class Fraction {
 	
@@ -11,12 +9,15 @@ public class Fraction {
 	public Fraction(int n, int d) {
 		numerator = n;
 		denominator = d;
+		reduce();
 	}
 	
 	/* Overloaded constructor initializes numerator and denominator */
 	public Fraction(Fraction f) {
 		numerator = f.getnumerator();
 		denominator = f.getdenominator();
+		//f.reduce();
+		reduce();
 	}
 	
 	/* Accessor methods get and return the numerator and denominator of data members */
@@ -37,10 +38,9 @@ public class Fraction {
 		denominator = d;
 	}
 	
-	/* override toString to print out a string with numerator/denominator in simplist terms*/
+	/* override toString to print out a string with numerator/denominator in simplest terms*/
 	public String toString() {
 		return (numerator + "/" + denominator);
-		//handle negatives and negative/negative also make it simplest terms
 	}
 	
 	/* override equals to check if two fractions are equal if the numerators and denominators (in simplest terms) are the same*/
@@ -56,47 +56,45 @@ public class Fraction {
     public Fraction add(Fraction f) {
     	int num = numerator * f.getdenominator() + f.getnumerator() * denominator;
     	int den = denominator * f.getdenominator();
-    	return reduce(new Fraction(num, den));
+    	return new Fraction(num, den);
     }
     
     /* subtracts one fraction from another */
     public Fraction sub(Fraction f) {
     	int num = numerator * f.getdenominator() - f.getnumerator() * denominator;
     	int den = denominator * f.getdenominator();
-    	return reduce(new Fraction(num, den));
+    	return new Fraction(num, den);
     }
     
     /* multiplies two fractions together */
     public Fraction mult(Fraction f) {
     	int num = numerator * f.getnumerator();
     	int den = denominator * f.getdenominator();
-    	return reduce(new Fraction(num, den));
+    	return new Fraction(num, den);
     }
     
     /* divides one fraction by another */
     public Fraction div(Fraction f) {
     	int num = numerator * f.getdenominator();
     	int den = denominator * f.getnumerator();
-    	return reduce(new Fraction(num, den));
+    	return new Fraction(num, den);
     }
     
-    /* reduces fraction to be in simplest terms */
-    private Fraction reduce(Fraction f) {
-    int num = f.getnumerator();
-    int den = f.getdenominator();
-    int tempnum = num;
-    int tempden = den; 
-
-    while (num != den){
-      if(num > den)
-    	  num = num - den;
-      else
-    	  den = den - num;
-    }      
-
-   int nnum = tempnum / num ;
-   int nden = tempden / num ;
-
-   return new Fraction(nnum, nden);
+    /* Euclidean algorithm for calculating greatest common divisor of integers a and b */
+    private int gcd(int a, int b) {
+        if (b == 0)
+            return a;
+        else
+            return gcd(b, a % b);
+    }
+    /* reduces fraction to be in simplest terms using GCD */
+    private void reduce() {
+    	int d = gcd(numerator, denominator);
+    	numerator /= d;
+    	denominator /= d;
+    	if (denominator < 0) {
+    		numerator = -numerator;
+    		denominator = -denominator;
+    	}
     }
 }
