@@ -6,7 +6,7 @@ public class ASCL99{
 		int points;
 		int finalpoints = 0;
 		String turn = "player";
-		String finalturn = "";
+		String finalturn = "player";
 		int[] cards = new int[3];
 		
 		Scanner init = new Scanner(System.in);
@@ -23,7 +23,7 @@ public class ASCL99{
 		points += cardtonum(greatest(cards), points);
 		
 		finalpoints = pointscheck(points, finalpoints);
-		changeturn(turn);
+		turn = changeturn(turn);
 		finalturn = checkturn(turn, finalpoints);
 		
 		Scanner card4 = new Scanner(System.in);
@@ -33,13 +33,13 @@ public class ASCL99{
 		points += cardtonum(cardfacevalue(card5.next()), points);
 		
 		finalpoints = pointscheck(points, finalpoints);
-		changeturn(turn);
+		turn = changeturn(turn);
 		finalturn = checkturn(turn, finalpoints);
 		
 		points += cardtonum(greatest(cards), points);
 		
 		finalpoints = pointscheck(points, finalpoints);
-		changeturn(turn);
+		turn = changeturn(turn);
 		finalturn = checkturn(turn, finalpoints);
 		
 		Scanner card6 = new Scanner(System.in);
@@ -49,13 +49,13 @@ public class ASCL99{
 		points += cardtonum(cardfacevalue(card7.next()), points);
 		
 		finalpoints = pointscheck(points, finalpoints);
-		changeturn(turn);
+		turn = changeturn(turn);
 		finalturn = checkturn(turn, finalpoints);
 		
 		points += cardtonum(greatest(cards), points);
 		
 		finalpoints = pointscheck(points, finalpoints);
-		changeturn(turn);
+		turn = changeturn(turn);
 		finalturn = checkturn(turn, finalpoints);
 		
 		Scanner card8 = new Scanner(System.in);
@@ -65,20 +65,20 @@ public class ASCL99{
 		points += cardtonum(cardfacevalue(card9.next()), points);
 		
 		finalpoints = pointscheck(points, finalpoints);
-		changeturn(turn);
+		turn = changeturn(turn);
 		finalturn = checkturn(turn, finalpoints);
 		
 		points += cardtonum(greatest(cards), points);
 		
 		finalpoints = pointscheck(points, finalpoints);
-		changeturn(turn);
+		turn = changeturn(turn);
 		finalturn = checkturn(turn, finalpoints);
 		
 		Scanner card10 = new Scanner(System.in);
 		picknew(card10.next(), cards, points);
 		
 		finalpoints = pointscheck(points, finalpoints);
-		changeturn(turn);
+		turn = changeturn(turn);
 		finalturn = checkturn(turn, finalpoints);
 		
 		System.out.println(finalpoints + ", " + finalturn);
