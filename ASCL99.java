@@ -1,87 +1,18 @@
 package mp1;
 import java.util.Scanner;
 
-public class ASCL99{
+public class ACSL99{
 	public static void main(String[] args) {
-		int points;
+		int points = 0;
 		int finalpoints = 0;
 		String turn = "player";
 		String finalturn = "player";
 		int[] cards = new int[3];
 		
-		Scanner init = new Scanner(System.in);
-		points = init.nextInt();
+		for (int i = 0; i < 5; i++) {
+		System.out.println(everything(points, finalpoints, turn, finalturn, cards));
+		}
 		
-		Scanner card1 = new Scanner(System.in);
-		Scanner card2 = new Scanner(System.in);
-		Scanner card3 = new Scanner(System.in);
-		
-		cards[0] = cardfacevalue(card1.next());
-		cards[1] = cardfacevalue(card2.next());
-		cards[2] = cardfacevalue(card3.next());
-		
-		points += cardtonum(greatest(cards), points);
-		
-		finalpoints = pointscheck(points, finalpoints);
-		turn = changeturn(turn);
-		finalturn = checkturn(turn, finalpoints);
-		
-		Scanner card4 = new Scanner(System.in);
-		picknew(card4.next(), cards, points);
-		
-		Scanner card5 = new Scanner(System.in);
-		points += cardtonum(cardfacevalue(card5.next()), points);
-		
-		finalpoints = pointscheck(points, finalpoints);
-		turn = changeturn(turn);
-		finalturn = checkturn(turn, finalpoints);
-		
-		points += cardtonum(greatest(cards), points);
-		
-		finalpoints = pointscheck(points, finalpoints);
-		turn = changeturn(turn);
-		finalturn = checkturn(turn, finalpoints);
-		
-		Scanner card6 = new Scanner(System.in);
-		picknew(card6.next(), cards, points);
-		
-		Scanner card7 = new Scanner(System.in);
-		points += cardtonum(cardfacevalue(card7.next()), points);
-		
-		finalpoints = pointscheck(points, finalpoints);
-		turn = changeturn(turn);
-		finalturn = checkturn(turn, finalpoints);
-		
-		points += cardtonum(greatest(cards), points);
-		
-		finalpoints = pointscheck(points, finalpoints);
-		turn = changeturn(turn);
-		finalturn = checkturn(turn, finalpoints);
-		
-		Scanner card8 = new Scanner(System.in);
-		picknew(card8.next(), cards, points);
-		
-		Scanner card9 = new Scanner(System.in);
-		points += cardtonum(cardfacevalue(card9.next()), points);
-		
-		finalpoints = pointscheck(points, finalpoints);
-		turn = changeturn(turn);
-		finalturn = checkturn(turn, finalpoints);
-		
-		points += cardtonum(greatest(cards), points);
-		
-		finalpoints = pointscheck(points, finalpoints);
-		turn = changeturn(turn);
-		finalturn = checkturn(turn, finalpoints);
-		
-		Scanner card10 = new Scanner(System.in);
-		picknew(card10.next(), cards, points);
-		
-		finalpoints = pointscheck(points, finalpoints);
-		turn = changeturn(turn);
-		finalturn = checkturn(turn, finalpoints);
-		
-		System.out.println(finalpoints + ", " + finalturn);
 	}
 	// ----------------------------------------------------------
 	public static int cardtonum(int c, int points) {
@@ -142,22 +73,19 @@ public class ASCL99{
 			cards[2] = cardfacevalue(pick);
 		}
 	}
-	// ----------------------------------------------------------
-	public static String changeturn(String turn) {
-		if (turn.equals("player")) {
-			return "dealer";
-		} else {
-			return "player";
-		}
-	}
+
 	//------------------------------------------------------------
-	public static String checkturn(String turn, int finalpoints) {
-		if (turn.equals("player") && finalpoints > 0) {
+	public static String doturn(String turn, String finalturn, int points, int finalpoints) {
+		if (turn.equals("player") && points <= 99) {
+			return "dealer";
+		} else if (turn.equals("dealer") && points <= 99) {
 			return "player";
-		} else if (turn.equals("dealer") && finalpoints > 0) {
+		} else if (turn.equals("player") && points > 99 && finalpoints > 99){
+			return "player";
+		}else if (turn.equals("dealer") && points > 99 && finalpoints > 99){
 			return "dealer";
 		} else {
-			return "never returned";
+			return "should never be returned";
 		}
 	}
 	//------------------------------------------------------------
@@ -172,4 +100,84 @@ public class ASCL99{
 			return finalpoints;
 		}
 	}
+	//------------------------------------------------------------
+
+	
+	
+	//------------------------------------------------------------
+	public static String everything(int points, int finalpoints, String turn, String finalturn, int cards[]) {
+		Scanner init = new Scanner(System.in);
+		points = init.nextInt();
+		
+		Scanner card1 = new Scanner(System.in);
+		Scanner card2 = new Scanner(System.in);
+		Scanner card3 = new Scanner(System.in);
+		
+		cards[0] = cardfacevalue(card1.next());
+		cards[1] = cardfacevalue(card2.next());
+		cards[2] = cardfacevalue(card3.next());
+		
+		points += cardtonum(greatest(cards), points);
+		
+		finalpoints = pointscheck(points, finalpoints);
+		turn = doturn(turn, finalturn, points, finalpoints);
+		
+		Scanner card4 = new Scanner(System.in);
+		picknew(card4.next(), cards, points);
+		
+		Scanner card5 = new Scanner(System.in);
+		points += cardtonum(cardfacevalue(card5.next()), points);
+		
+		finalpoints = pointscheck(points, finalpoints);
+		turn = doturn(turn, finalturn, points, finalpoints);
+		
+		points += cardtonum(greatest(cards), points);
+		
+		finalpoints = pointscheck(points, finalpoints);
+		turn = doturn(turn, finalturn, points, finalpoints);
+		
+		Scanner card6 = new Scanner(System.in);
+		picknew(card6.next(), cards, points);
+		
+		Scanner card7 = new Scanner(System.in);
+		points += cardtonum(cardfacevalue(card7.next()), points);
+		
+		finalpoints = pointscheck(points, finalpoints);
+		turn = doturn(turn, finalturn, points, finalpoints);
+		
+		points += cardtonum(greatest(cards), points);
+		
+		finalpoints = pointscheck(points, finalpoints);
+		turn = doturn(turn, finalturn, points, finalpoints);
+		
+		Scanner card8 = new Scanner(System.in);
+		picknew(card8.next(), cards, points);
+		
+		Scanner card9 = new Scanner(System.in);
+		points += cardtonum(cardfacevalue(card9.next()), points);
+		
+		finalpoints = pointscheck(points, finalpoints);
+		turn = doturn(turn, finalturn, points, finalpoints);
+		
+		points += cardtonum(greatest(cards), points);
+		
+		finalpoints = pointscheck(points, finalpoints);
+		turn = doturn(turn, finalturn, points, finalpoints);
+		
+		Scanner card10 = new Scanner(System.in);
+		picknew(card10.next(), cards, points);
+		
+		finalpoints = pointscheck(points, finalpoints);
+		turn = doturn(turn, finalturn, points, finalpoints);
+		
+		return(finalpoints + ", " + getWinner(turn));
+	}
+	
+    public static String getWinner(String turn) {
+        if (turn.equals("player")) 
+            return "dealer";
+        else {
+            return "player";
+        }
+    }
 }
