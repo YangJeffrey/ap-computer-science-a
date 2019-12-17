@@ -46,9 +46,13 @@ public class Student {
     }
     
     public void toString(Student s) {
-    	System.out.println("Name: " + name);
-    	System.out.println("ID: " + id);
-    	System.out.println("Grade: " + grade);
-    	System.out.println("GPA: " + gpa);
+    	System.out.println("Name: " + s.getname());
+    	System.out.println("ID: " + s.getid());
+    	System.out.println("Grade: " + s.getgrade());
+    	System.out.println("GPA: " + s.getgpa());
     }
+    
+//	public String toString(Student s) {
+//		return ("Name: " + s.getname() + "\n" + "ID: " + s.getid() + "\n" + "Grade: " + s.getgrade() + "\n" + "GPA: " + s.getgpa());
+//	}
 }
