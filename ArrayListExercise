@@ -1,0 +1,50 @@
+/* Jeffrey Yang
+ * Cannella 4B */
+
+package mp1;
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class ArrayListExercise {
+	public static void main(String[] args) {
+		ArrayList<BCD> bcdList = new ArrayList<BCD>();
+
+		bcdList.add(new BCD(10));
+		bcdList.add(new BCD(20));
+		bcdList.add(new BCD(30));
+		bcdList.add(new BCD(40));
+
+		bcdList.add(0, new BCD(50));
+
+		bcdList.set(0, new BCD(60));
+
+		bcdList.remove(0);
+
+		System.out.println("Size: " + bcdList.size());
+
+		System.out.print("Print BCD: ");
+		for (BCD bcd : bcdList) {
+			System.out.println();
+			bcd.print();
+		}
+		
+		System.out.println();
+		System.out.print("Foreach Loop: ");
+		for (BCD bcd : bcdList) {
+			System.out.println();
+			bcd.print();
+		}
+
+		System.out.println();
+		System.out.print("List Iterator: ");
+		ListIterator<BCD> bcdListIterator = bcdList.listIterator();
+
+		while (bcdListIterator.hasNext()) {
+			BCD bcdNext = bcdListIterator.next();
+			System.out.println();
+			bcdNext.print();
+		}
+
+	}
+}
