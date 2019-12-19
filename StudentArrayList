@@ -1,0 +1,31 @@
+package mp1;
+
+import java.util.*;
+
+public class arrayListMP2 {
+	public static void main(String[] args) {
+		student fiftytwo = new student("Mason", 52);
+		student fiftythree = new student("MrBean", 53);
+
+		ArrayList<student> myList = new ArrayList<student>();
+		myList.add(fiftytwo);
+		myList.add(1, fiftythree);
+		myList.add(2, new student("Lemon", 123));
+		myList.set(2, fiftythree);
+
+		System.out.println(myList.get(2));
+
+		myList.remove(2);
+
+		System.out.println(myList.size());
+
+		ListIterator<student> myIterator = myList.listIterator();
+		while (myIterator.hasNext()) {
+			System.out.println(myIterator.next());
+		}
+		
+		//lopping thru iterator
+		
+		
+	}
+}
