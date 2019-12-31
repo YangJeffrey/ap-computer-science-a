@@ -1,11 +1,14 @@
 package mp1;
 
+/* Student class has data members name, id, grade, and gpa. Constructor initializes student with name, id, grade and gpa. Accessor methods return the student's name, id, grade, or gpa. Modifier methods change the student's name or id. Override equals method to return true if ids are the same. toString returns student's name, id, gpa, and grade on separate lines with labels. */
 public class Student {
+	//data members
 	private String name;
 	private int id;
 	private int grade;
 	private double gpa;
 	
+	/* Constructor initializes student with name, id, grade and gpa */
 	public Student(String n, int i, int l, double g) {
 		name = n;
 		id = i;
@@ -13,30 +16,37 @@ public class Student {
 		gpa = g;
 	}
 	
+	/* returns the student's name */
 	public String getname() {
 		return name;
 	}
 	
+	/* returns the student's id */
 	public int getid() {
 		return id;
 	}
 	
+	/* returns the student's grade */
 	public int getgrade() {
 		return grade;
 	}
 	
+	/* returns the student's gpa */
 	public double getgpa() {
 		return gpa;
 	}
 	
+	/* changes the student's name */
 	public void setname(String n) {
 		name = n;
 	}
 	
+	/* changes the student's id */
 	public void setid(int i) {
 		id = i;
 	}
 	
+	/* override equals method to return true if ids are the same */
     public boolean equals(Student s) {
         if (s.getid() == id) {
             return true;
@@ -45,14 +55,8 @@ public class Student {
         }
     }
     
-//    public void toString(Student s) {
-//    	System.out.println("Name: " + s.getname());
-//    	System.out.println("ID: " + s.getid());
-//    	System.out.println("Grade: " + s.getgrade());
-//    	System.out.println("GPA: " + s.getgpa());
-//    }
-    
+    /* returns student's name, id, gpa, and grade on separate lines with labels */
 	public String toString(Student s) {
-		return ("Name: " + s.getname() + " ID: " + s.getid() + " Grade: " + s.getgrade() + " GPA: " + s.getgpa());
+		return ("Name: " + s.getname() + "\n" + "ID: " + s.getid() + "\n" + "Grade: " + s.getgrade() + "\n" + "GPA: " + s.getgpa() + "\n");
 	}
 }
