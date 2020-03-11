@@ -1,0 +1,92 @@
+package mp1;
+
+import java.util.*;
+
+public class ACSLSamenessFactor {
+	public static void main(String[] args) {
+		Scanner obj = new Scanner(System.in);
+		ArrayList<String> string1 = new ArrayList<String>();
+		ArrayList<String> string2 = new ArrayList<String>();
+		boolean afterspace = false;
+
+		for (int j = 1; j < 6; j++) {
+			System.out.println(j + ". ");
+			String input = obj.nextLine();
+
+// convert raw input into 2 arraylists
+			for (int i = 0; i < input.length(); i++) {
+				if (input.substring(i, i + 1).equals(" ")) {
+					afterspace = true;
+				}
+				if (!afterspace && !input.substring(i, i + 1).equals(" ")) {
+					string1.add(input.substring(i, i + 1));
+				} else if (afterspace && !input.substring(i, i + 1).equals(" ")) {
+					string2.add(input.substring(i, i + 1));
+				}
+			}
+		
+			deletesameletters(string1, string2);
+
+			zigzagpredelete(string1, string2);
+			
+			System.out.println();
+
+			System.out.println(j + ". " + calculateasf(string1, string2));
+			
+
+			string1.clear();
+			string2.clear();
+			afterspace = false;
+		}
+	}
+
+	/*
+	 * remove all the same letters in the same indexes of the 2 arraylists
+	 * recursively
+	 */
+	public static void deletesameletters(ArrayList<String> string1, ArrayList<String> string2) {
+		for (int i = 0; i < Math.min(string1.size(), string2.size()); i++) {
+			if (string1.get(i).equals(string2.get(i))) {
+				string1.remove(i);
+				string2.remove(i);
+				deletesameletters(string1, string2);
+			}
+		}
+	}
+
+	/*
+	 * calculate the acsl sameness factor by comparing and then adding each
+	 * character
+	 */
+	public static int calculateasf(ArrayList<String> string1, ArrayList<String> string2) {
+		int asf = 0;
+
+		for (int i = 0; i < Math.min(string1.size(), string2.size()); i++) {
+			asf += string1.get(i).compareTo(string2.get(i));
+		}
+
+		asf += Math.max(string1.size(), string2.size()) - Math.min(string1.size(), string2.size());
+		return asf;
+	}
+
+	/* delete a letter if collapse causes same characters to be lined up */
+	public static void zigzagpredelete(ArrayList<String> string1, ArrayList<String> string2) {
+		for (int i = 0; i < Math.min(string1.size(), string2.size()); i++) {
+			if (string2.size() - 1 > i) {
+				if (string2.get(i + 1).equals(string1.get(i))) {
+					string2.remove(i);
+					deletesameletters(string1, string2);
+					zigzagpredelete(string1, string2);
+				}
+			}
+
+			if (string1.size() - 1 > i) {
+				if (string1.get(i + 1).equals(string2.get(i))) {
+					string1.remove(i);
+					deletesameletters(string1, string2);
+					zigzagpredelete(string1, string2);
+				}
+			}
+		}
+	}
+}
