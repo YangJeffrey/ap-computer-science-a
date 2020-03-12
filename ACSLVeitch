@@ -1,21 +1,21 @@
-package mp1;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ACSLVeitch {
 	public static void main(String[] args) {
-		for (int a = 0; a < 5; a++) {
+		for (int a = 1; a < 6; a++) {
 			String[][] grid = { { "ABcd", "ABCd", "aBCd", "aBcd" }, { "ABcD", "ABCD", "aBCD", "aBcD" },
 					{ "AbcD", "AbCD", "abCD", "abcD" }, { "Abcd", "AbCd", "abCd", "abcd" } };
 
 			Scanner obj = new Scanner(System.in);
-			String strinput = obj.nextLine();
 			ArrayList<String> arrinput = new ArrayList<String>();
 			String block = "";
 			ArrayList<String> newarrinput = new ArrayList<String>();
 			boolean contains = true;
 			String strbinary = "";
+
+			System.out.println("Input #" + a + ":");
+			String strinput = obj.nextLine();
 
 			for (int i = 0; i < strinput.length(); i++) {
 				arrinput.add(strinput.substring(i, i + 1));
@@ -35,15 +35,16 @@ public class ACSLVeitch {
 					newarrinput.add(block);
 					block = "";
 				}
-				if (i == arrinput.size() - 2) {
-					newarrinput.add(block);
-				}
 				if (skipone) {
 					i++;
+				}
+				if (i == arrinput.size() - 1) {
+					newarrinput.add(block);
 				}
 			}
 
 			for (String b : newarrinput) {
+//				System.out.println(b + " ");
 				for (int r = 0; r < grid.length; r++) {
 					for (int c = 0; c < grid[0].length; c++) {
 
@@ -56,28 +57,36 @@ public class ACSLVeitch {
 						if (contains) {
 							grid[r][c] = " X  ";
 						}
-						
+
 						contains = true;
 					}
 				}
 			}
-			
+
 			for (int r = 0; r < grid.length; r++) {
 				for (int c = 0; c < grid[0].length; c++) {
-					if(grid[r][c].equals(" X  ")) {
+					if (grid[r][c].equals(" X  ")) {
 						strbinary += 1;
 					} else {
 						strbinary += 0;
 					}
-	 			}
-				System.out.println();
+				}
 			}
-			
-			System.out.println(binaryToHex(strbinary));
+
+//			for (int r = 0; r < grid.length; r++) {
+//				for (int c = 0; c < grid[0].length; c++) {
+//					System.out.print("[" + grid[r][c] + "]");
+//				}
+//				System.out.println();
+//			}
+
+			System.out.println("Output #" + a + ":");
+			System.out.println(binaryToHex(strbinary).toUpperCase());
+			System.out.println();
 		}
 	}
-	
+
 	public static String binaryToHex(String binary) {
-		return Integer.toString(Integer.parseInt(binary,2),16);
+		return Integer.toString(Integer.parseInt(binary, 2), 16);
 	}
 }
