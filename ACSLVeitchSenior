@@ -50,7 +50,13 @@ public class ACSLSeniorVeitchFinal {
 				"Bcd", "BcD", "bcD", "bcd",
 				"Acd", "ACd", "aCd", "acd",
 				
-				
+				//4
+				"ABCD",
+				"aBCD", "AbCD", "ABcD", "ABCd",
+				"adCD", "AbcD", "ABcd", "aBCd", 
+				"Abcd", "aBcd", "abCd", "abcD",
+				"AbCd", "aBcD",
+				"abcd"
 				
 		};
 
