@@ -20,9 +20,24 @@ public class ACSLSeniorVeitchFinal {
 				// 2
 				"Bd", "BD", "bD", "bd",
 				"Ac", "AC", "aC", "ac",
-				"AB", "Ab", "CD", "aB", "ab",
+				
+				"AB", "AD", "Ab", 
+				"BC", "CD", "bC",
+				"aB", "aD", "ab",
+				
+				
+				"Ad",
+				"Cd",
+				"ad",
+				//might have to switch above and below
+				"Bc",
+				"cD",
+				"bc",
+				
+				"cd"
 				
 				//3
+				
 				
 		};
 
