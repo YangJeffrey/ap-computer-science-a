@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ACSLSeniorVeitchFinal {
+public class ACSLVeitchSenior {
 	public static void main(String[] args) {
 		
 		for (int z = 1; z < 6; z++) {
