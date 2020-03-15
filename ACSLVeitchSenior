@@ -1,173 +1,178 @@
+package mp1;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ACSLSeniorVeitchFinal {
 	public static void main(String[] args) {
-		String[][] grid = { { "ABcd", "ABCd", "aBCd", "aBcd" }, { "ABcD", "ABCD", "aBCD", "aBcD" },
-				{ "AbcD", "AbCD", "abCD", "abcD" }, { "Abcd", "AbCd", "abCd", "abcd" } };
-		int[][] fgrid = new int[4][4];
-		int[][] ogrid = new int[4][4];
-		String[] allcombos = {
+		
+		for (int z = 1; z < 6; z++) {
+			String[][] grid = { { "ABcd", "ABCd", "aBCd", "aBcd" }, { "ABcD", "ABCD", "aBCD", "aBcD" },
+					{ "AbcD", "AbCD", "abCD", "abcD" }, { "Abcd", "AbCd", "abCd", "abcd" } };
+			int[][] fgrid = new int[4][4];
+			int[][] ogrid = new int[4][4];
+			String[] allcombos = {
 
-				// 1
-				"B", "D", 
-				"b", "A", 
-				"C", "a",
-				"c", "d",
+					// 1
+					"B", "D", 
+					"b", "A", 
+					"C", "a",
+					"c", "d",
 
-				// 2
-				"Bd", "BD", "bD", "bd",
-				"Ac", "AC", "aC", "ac",
-				
-				"AB", "AD", "Ab", 
-				"BC", "CD", "bC",
-				"aB", "aD", "ab",
-				
-				
-				"Ad",
-				"Cd",
-				"ad",
-				//might have to switch above and below
-				"Bc",
-				"cD",
-				"bc",
-				
-				"cd",
-				
-				//3
-				"ABd", "BCd", "aBd",
-				"ABD", "BCD", "aBD",
-				"AbD", "bCD", "abD",
-				"Abd", "bCd", "abd",
-				
-				"ABc", "AcD", "Abc",
-				"ABC", "ACD", "AbC",
-				"aBC", "aCD", "abC",
-				"aBc", "acD", "abc",
-				
-				"Bcd", "BcD", "bcD", "bcd",
-				"Acd", "ACd", "aCd", "acd",
-				
-				//4
-				"ABCD",
-				"aBCD", "AbCD", "ABcD", "ABCd",
-				"abCD", "AbcD", "ABcd", "aBCd", 
-				"Abcd", "aBcd", "abCd", "abcD",
-				"AbCd", "aBcD",
-				"abcd"
-				
-		};
+					// 2
+					"Bd", "BD", "bD", "bd",
+					"Ac", "AC", "aC", "ac",
+					
+					"AB", "AD", "Ab", 
+					"BC", "CD", "bC",
+					"aB", "aD", "ab",
+					
+					
+					"Ad",
+					"Cd",
+					"ad",
+					//might have to switch above and below
+					"Bc",
+					"cD",
+					"bc",
+					
+					"cd",
+					
+					//3
+					"ABd", "BCd", "aBd",
+					"ABD", "BCD", "aBD",
+					"AbD", "bCD", "abD",
+					"Abd", "bCd", "abd",
+					
+					"ABc", "AcD", "Abc",
+					"ABC", "ACD", "AbC",
+					"aBC", "aCD", "abC",
+					"aBc", "acD", "abc",
+					
+					"Bcd", "BcD", "bcD", "bcd",
+					"Acd", "ACd", "aCd", "acd",
+					
+					//4
+					"ABCD",
+					"aBCD", "AbCD", "ABcD", "ABCd",
+					"abCD", "AbcD", "ABcd", "aBCd", 
+					"Abcd", "aBcd", "abCd", "abcD",
+					"AbCd", "aBcD",
+					"abcd"
+					
+			};
 
-		Scanner obj = new Scanner(System.in);
-		String hex = obj.nextLine();
-		String strbinary = hexToBinary(hex);
-		String strbinarytemp = "";
-		String output = "";
-		String finaloutput = "";
+			Scanner obj = new Scanner(System.in);
+			String hex = obj.nextLine();
+			String strbinary = hexToBinary(hex);
+			String strbinarytemp = "";
+			String output = "";
+			String finaloutput = "";
 
-		// add 0s to front if needed
-		if (strbinary.length() < 16) {
-			strbinarytemp = strbinary;
-			strbinary = "";
-			for (int i = 0; i < 16 - strbinary.length(); i++) {
-				strbinary += "0";
+			// add 0s to front if needed
+			if (strbinary.length() < 16) {
+				strbinarytemp = strbinary;
+				strbinary = "";
+				for (int i = 0; i < 16 - strbinarytemp.length(); i++) {
+					strbinary += "0";
+				}
+				strbinary += strbinarytemp;
 			}
-			strbinary += strbinarytemp;
-		}
 
-		System.out.println(strbinary);
+			System.out.println(strbinary);
 
-		// strbinary to fgrid
-		int r = 0;	
-		int c = 0;
+			// strbinary to fgrid
+			int r = 0;	
+			int c = 0;
 
-		for (int i = 0; i < 16; i++) {
-			fgrid[c][r] = Integer.parseInt(strbinary.substring(i, i + 1));
-			if (r < 3) {
-				r++;
-			} else {
-				c++;
-				r = 0;
-			}
-		}
-
-		// print fgrid
-		for (int a = 0; a < fgrid.length; a++) {
-			for (int b = 0; b < fgrid[0].length; b++) {
-				System.out.print("[" + fgrid[a][b] + "]");
-			}
-			System.out.println();
-		}
-		System.out.println();
-
-		// compare each ogrid of allcombos to fgrid
-		for (int a = 0; a < allcombos.length; a++) {
-			boolean samegrid = true;
-
-			for (int x = 0; x < 4; x++) {
-				for (int y = 0; y < 4; y++) {
-					boolean contains = true;
-
-					for (int i = 0; i < allcombos[a].length(); i++) {
-						if (!grid[x][y].contains(allcombos[a].substring(i, i + 1))) {
-							contains = false;
-						}
-					}
-
-					if (contains) {
-						ogrid[x][y] = 1;
-					}
+			for (int i = 0; i < 16; i++) {
+				fgrid[c][r] = Integer.parseInt(strbinary.substring(i, i + 1));
+				if (r < 3) {
+					r++;
+				} else {
+					c++;
+					r = 0;
 				}
 			}
 
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; j++) {
-					if (ogrid[i][j] == 1 && fgrid[i][j] != 1) {
-						samegrid = false;
-					}
-				}
-			}
-
-			if (samegrid) {
-				// print ogrid
-				for (int i = 0; i < 4; i++) {
-					for (int j = 0; j < 4; j++) {
-						System.out.print("[" + ogrid[i][j] + "]");
-						if (ogrid[i][j] == 1 && fgrid[i][j] == 1) {
-							fgrid[i][j] = 0;
-						}
-					}
-					System.out.println();
+			// print fgrid
+			for (int a = 0; a < fgrid.length; a++) {
+				for (int b = 0; b < fgrid[0].length; b++) {
+					System.out.print("[" + fgrid[a][b] + "]");
 				}
 				System.out.println();
-				output += allcombos[a] + "+";
 			}
+			System.out.println();
 
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 4; j++) {
-					ogrid[i][j] = 0;
+			// compare each ogrid of allcombos to fgrid
+			for (int a = 0; a < allcombos.length; a++) {
+				boolean samegrid = true;
+
+				for (int x = 0; x < 4; x++) {
+					for (int y = 0; y < 4; y++) {
+						boolean contains = true;
+
+						for (int i = 0; i < allcombos[a].length(); i++) {
+							if (!grid[x][y].contains(allcombos[a].substring(i, i + 1))) {
+								contains = false;
+							}
+						}
+
+						if (contains) {
+							ogrid[x][y] = 1;
+						}
+					}
+				}
+
+				for (int i = 0; i < 4; i++) {
+					for (int j = 0; j < 4; j++) {
+						if (ogrid[i][j] == 1 && fgrid[i][j] != 1) {
+							samegrid = false;
+						}
+					}
+				}
+
+				if (samegrid) {
+					// print ogrid
+					for (int i = 0; i < 4; i++) {
+						for (int j = 0; j < 4; j++) {
+							System.out.print("[" + ogrid[i][j] + "]");
+							if (ogrid[i][j] == 1 && fgrid[i][j] == 1) {
+								fgrid[i][j] = 0;
+							}
+						}
+						System.out.println();
+					}
+					System.out.println();
+					output += allcombos[a] + "+";
+				}
+
+				for (int i = 0; i < 4; i++) {
+					for (int j = 0; j < 4; j++) {
+						ogrid[i][j] = 0;
+					}
 				}
 			}
-		}
-		
-		for (int i = 0; i < output.length(); i++) {
-			if (output.substring(i, i+1).equals("a")) {
-				finaloutput += "~A";
-			} else if (output.substring(i, i+1).equals("b")) {
-				finaloutput += "~B";
-			} else if (output.substring(i, i+1).equals("c")) {
-				finaloutput += "~C";
-			} else if (output.substring(i, i+1).equals("d")) {
-				finaloutput += "~D";
-			} else if (output.substring(i, i+1).equals("+") && i != output.length() - 1) {
-				finaloutput += "+";
-			} else if (output.substring(i, i+1).equals("A") || output.substring(i, i+1).equals("B") || output.substring(i, i+1).equals("C") || output.substring(i, i+1).equals("D")) {
-				finaloutput += output.substring(i, i+1);
+			
+			for (int i = 0; i < output.length(); i++) {
+				if (output.substring(i, i+1).equals("a")) {
+					finaloutput += "~A";
+				} else if (output.substring(i, i+1).equals("b")) {
+					finaloutput += "~B";
+				} else if (output.substring(i, i+1).equals("c")) {
+					finaloutput += "~C";
+				} else if (output.substring(i, i+1).equals("d")) {
+					finaloutput += "~D";
+				} else if (output.substring(i, i+1).equals("+") && i != output.length() - 1) {
+					finaloutput += "+";
+				} else if (output.substring(i, i+1).equals("A") || output.substring(i, i+1).equals("B") || output.substring(i, i+1).equals("C") || output.substring(i, i+1).equals("D")) {
+					finaloutput += output.substring(i, i+1);
+				}
 			}
+			
+			
+			System.out.println("Output: " + finaloutput);
 		}
-		
-		
-		System.out.println("Output: " + finaloutput);
 	}
 
 	public static String hexToBinary(String hex) {
