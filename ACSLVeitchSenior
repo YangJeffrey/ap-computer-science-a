@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ACSLVeitchSenior {
+public class ACSLSeniorVeitchFinal {
 	public static void main(String[] args) {
 		
 		for (int z = 1; z < 6; z++) {
@@ -31,7 +31,6 @@ public class ACSLVeitchSenior {
 					"Bc",
 					"cD",
 					"bc",
-					
 					"cd",
 					
 					"ABd", "BCd", "aBd",
@@ -87,14 +86,6 @@ public class ACSLVeitchSenior {
 				}
 			}
 
-//			for (int a = 0; a < fgrid.length; a++) {
-//				for (int b = 0; b < fgrid[0].length; b++) {
-//					System.out.print("[" + fgrid[a][b] + "]");
-//				}
-//				System.out.println();
-//			}
-//			System.out.println();
-
 			for (int a = 0; a < allcombos.length; a++) {
 				boolean samegrid = true;
 
@@ -125,14 +116,11 @@ public class ACSLVeitchSenior {
 				if (samegrid) {
 					for (int i = 0; i < 4; i++) {
 						for (int j = 0; j < 4; j++) {
-//							System.out.print("[" + ogrid[i][j] + "]");
 							if (ogrid[i][j] == 1 && fgrid[i][j] == 1) {
 								fgrid[i][j] = 0;
 							}
 						}
-//						System.out.println();
 					}
-//					System.out.println();
 					output += allcombos[a] + "+";
 				}
 
