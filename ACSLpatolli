@@ -58,7 +58,21 @@ public class patolli {
 								|| playermarkers[index]++ == playermarkers[2]) {
 							playermarkers[index]++;
 						} else {
-							//idk abt this
+							// idk abt this
+							break;
+						}
+					}
+				}
+				if (isperfectsquare(playermarkers[index])) {
+					for (int j = 0; j < 6; j++) {
+						if (playermarkers[index]-- == arrinput.get(0) || playermarkers[index]-- == arrinput.get(1)
+								|| playermarkers[index]-- == arrinput.get(2)
+								|| playermarkers[index]-- == playermarkers[0]
+								|| playermarkers[index]-- == playermarkers[1]
+								|| playermarkers[index]-- == playermarkers[2]) {
+							playermarkers[index]--;
+						} else {
+							// idk abt this either
 							break;
 						}
 					}
@@ -111,10 +125,10 @@ public class patolli {
 		// unreachable code in order to satisfy condition
 		return false;
 	}
-	
+
 	public static boolean isperfectsquare(int num) {
 		boolean isperfectsquare = false;
-		int[] perfectsquares = {9, 16, 25, 36, 49};
+		int[] perfectsquares = { 9, 16, 25, 36, 49 };
 		for (int i = 0; i < perfectsquares.length; i++) {
 			if (num == perfectsquares[i]) {
 				isperfectsquare = true;
