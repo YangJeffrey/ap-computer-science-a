@@ -105,9 +105,11 @@ public class patolli {
 					//some BULLSHIT condition
 					if (Math.abs(newr - oldr) >= 1) {
 						if (Math.abs(newc - oldc) >= 1) {
-							for (int j = board[oldr][oldc]; j <= board[newr][newc]; j++) {
-								if (j % arrinput.get(i) == 0 && j != arrinput.get(0) && j != arrinput.get(1) && j != arrinput.get(2) && j != playermarkers[0] && j != playermarkers[1] && j != playermarkers[2]) {
-									 playermarkers[index] = j;
+							if (board[newr][oldc] != 0 && board[oldr][newc] != 0) {
+								for (int j = board[oldr][oldc]; j <= board[newr][newc]; j++) {
+									if (j % arrinput.get(i) == 0 && j != arrinput.get(0) && j != arrinput.get(1) && j != arrinput.get(2) && j != playermarkers[0] && j != playermarkers[1] && j != playermarkers[2]) {
+										 playermarkers[index] = j;
+									}
 								}
 							}
 						}
