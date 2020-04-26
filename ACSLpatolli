@@ -28,24 +28,47 @@ public class patolli {
 				chunk = "";
 			}
 		}
-		
+
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
-				if (board[i][j] == arrinput.get(0) || board[i][j] == arrinput.get(1) || board[i][j] == arrinput.get(2)) {
+				if (board[i][j] == arrinput.get(0) || board[i][j] == arrinput.get(1)
+						|| board[i][j] == arrinput.get(2)) {
 					board[i][j] = 0;
 				}
 			}
 		}
-		
+
 		playermarkers[0] = arrinput.get(3);
 		playermarkers[1] = arrinput.get(4);
 		playermarkers[2] = arrinput.get(5);
-		
+
 		for (int i = 6; i < arrinput.size(); i++) {
-			System.out.println(playermarkers[min(playermarkers)]);
-			playermarkers[min(playermarkers)] += 1;
+			int index = min(playermarkers);
+			if ((playermarkers[index] + arrinput.get(i) != arrinput.get(0)
+					|| playermarkers[index] + arrinput.get(i) != arrinput.get(1)
+					|| playermarkers[index] + arrinput.get(i) != arrinput.get(2))
+					&& playermarkers[index] + arrinput.get(i) < 52) {
+				playermarkers[index] += arrinput.get(i);
+				if (isprime(playermarkers[index])) {
+					for (int j = 0; j < 6; j++) {
+						if (playermarkers[index]++ == arrinput.get(0) || playermarkers[index]++ == arrinput.get(1)
+								|| playermarkers[index]++ == arrinput.get(2)
+								|| playermarkers[index]++ == playermarkers[0]
+								|| playermarkers[index]++ == playermarkers[1]
+								|| playermarkers[index]++ == playermarkers[2]) {
+							playermarkers[index]++;
+						} else {
+							//idk abt this
+							break;
+						}
+					}
+				}
+			}
+
+			if (playermarkers[min(playermarkers)] + arrinput.get(i) == 52) {
+				playermarkers[min(playermarkers)] = 0;
+			}
 		}
-		
 
 //		for (int i = 0; i < board.length; i++) {
 //			for (int j = 0; j < board[i].length; j++) {
@@ -53,9 +76,9 @@ public class patolli {
 //			}
 //			System.out.println();
 //		}
-		
+
 	}
-	
+
 	public static int min(int[] playermarkers) {
 		int min = 0;
 		if (playermarkers[1] < playermarkers[0]) {
@@ -66,7 +89,7 @@ public class patolli {
 		}
 		return min;
 	}
-	
+
 	public static boolean isprime(int num) {
 		int i;
 		int m = 0;
@@ -84,9 +107,20 @@ public class patolli {
 				return true;
 			}
 		}
-		
-		//unreachable code in order to satisfy condition
+
+		// unreachable code in order to satisfy condition
 		return false;
+	}
+	
+	public static boolean isperfectsquare(int num) {
+		boolean isperfectsquare = false;
+		int[] perfectsquares = {9, 16, 25, 36, 49};
+		for (int i = 0; i < perfectsquares.length; i++) {
+			if (num == perfectsquares[i]) {
+				isperfectsquare = true;
+			}
+		}
+		return isperfectsquare;
 	}
 }
 
