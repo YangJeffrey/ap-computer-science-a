@@ -83,6 +83,17 @@ public class patolli {
 				playermarkers[min(playermarkers)] = 0;
 			}
 		}
+		
+		
+		
+		//output
+		if (playermarkers[0] == 0 && playermarkers[1] == 0 && playermarkers[2] == 0) {
+			System.out.print("GAME OVER");
+		} else {
+			for (int i = 0; i < 3; i++) {
+				System.out.print(playermarkers[i]);
+			}
+		}
 
 //		for (int i = 0; i < board.length; i++) {
 //			for (int j = 0; j < board[i].length; j++) {
