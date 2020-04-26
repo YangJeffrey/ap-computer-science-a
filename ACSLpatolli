@@ -50,6 +50,7 @@ public class patolli {
 
 		for (int i = 6; i < arrinput.size(); i++) {
 			int index = min(playermarkers);
+			int original = playermarkers[index];
 			if ((playermarkers[index] + arrinput.get(i) != arrinput.get(0)
 					|| playermarkers[index] + arrinput.get(i) != arrinput.get(1)
 					|| playermarkers[index] + arrinput.get(i) != arrinput.get(2))
@@ -83,8 +84,34 @@ public class patolli {
 						}
 					}
 				}
+				//might have to go outside big boy if statement idk
 				if (!isprime(playermarkers[index]) && !isperfectsquare(playermarkers[index])) {
-					
+					int oldr = 0;
+					int oldc = 0;
+					int newr = 0;
+					int newc = 0;
+					for (int j = 0; j < board.length; j++) {
+						for (int k = 0; k < board[i].length; k++) {
+						if (board[j][k] == original) {
+							oldr = j;
+							oldc = k;
+						}
+						if (board[j][k] == playermarkers[index]) {
+							newr = j;
+							newc = k;
+						}
+					}
+				}
+					//some BULLSHIT condition
+					if (Math.abs(newr - oldr) >= 1) {
+						if (Math.abs(newc - oldc) >= 1) {
+							for (int j = board[oldr][oldc]; j <= board[newr][newc]; j++) {
+								if (j % arrinput.get(i) == 0 && j != arrinput.get(0) && j != arrinput.get(1) && j != arrinput.get(2) && j != playermarkers[0] && j != playermarkers[1] && j != playermarkers[2]) {
+									 playermarkers[index] = j;
+								}
+							}
+						}
+					}
 				}
 			}
 
@@ -92,8 +119,6 @@ public class patolli {
 				playermarkers[min(playermarkers)] = 0;
 			}
 		}
-		
-		
 		
 		//output
 		if (playermarkers[0] == 0 && playermarkers[1] == 0 && playermarkers[2] == 0) {
