@@ -91,7 +91,7 @@ public class patolli {
 					int newr = 0;
 					int newc = 0;
 					for (int j = 0; j < board.length; j++) {
-						for (int k = 0; k < board[i].length; k++) {
+						for (int k = 0; k < board[j].length; k++) {
 						if (board[j][k] == original) {
 							oldr = j;
 							oldc = k;
@@ -127,7 +127,7 @@ public class patolli {
 			System.out.print("GAME OVER");
 		} else {
 			for (int i = 0; i < 3; i++) {
-				System.out.print(playermarkers[i]);
+				System.out.print(playermarkers[i] + " ");
 			}
 		}
 
