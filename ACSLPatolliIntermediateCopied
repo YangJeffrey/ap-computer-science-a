@@ -1,0 +1,173 @@
+package mp1;
+
+import java.util.*;
+
+public class copiedpatolli {
+	
+	public static int gameboard[] = new int[52];
+	public static int corner[] = { 7, 12, 17, 22, 27, 35, 40, 45, 50 };
+	public static int marker = 0;
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		for (int a = 1; a <= 5; a++) {
+			
+			ArrayList<Integer> opp = new ArrayList<Integer>();
+			ArrayList<Integer> player = new ArrayList<Integer>();
+			int input = 0;
+			
+			System.out.print("Input " + a + ". ");
+			for (int j = 0; j < 3; j++) {
+				input = scan.nextInt();
+				opp.add(input);
+			}
+			
+			for (int j = 0; j < 3; j++) {
+				input = scan.nextInt();
+				player.add(input);
+			}
+			
+			int movecount = scan.nextInt();
+			Collections.sort(player);
+			
+			for (int j = 0; j < 52; j++) {
+				gameboard[j] = 0;
+			}
+			
+			for (int j = 0; j < 3; j++) {
+				gameboard[opp.get(j) - 1] = 2;
+			}
+			
+			int start[] = new int[52];
+			
+			for (int j = 0; j < 52; j++) {
+				start[j] = gameboard[j];
+			}
+			
+			for (int j = 0; j < movecount; j++) {
+				for (int i = 0; i < 52; ++i) {
+					gameboard[i] = start[i];
+				}
+				for (int i = 0; i < player.size(); i++) {
+					gameboard[player.get(i) - 1] = 1;
+				}
+				int movestep = scan.nextInt();
+				int pos = player.get(0);
+				player.remove(0);
+				int lower = pos;
+				
+				if (!full(pos + movestep - 1)) {
+					pos += movestep;
+				} else {
+					player.add(pos);
+					Collections.sort(player);
+					continue;
+				}
+				int countcorr = 1, firstct = 0;
+				boolean done = false;
+				while (countcorr > 0 && firstct < 20) {
+					firstct++;
+					countcorr = 0;
+					
+					if (pos == 52) {
+						gameboard[51] = 0;
+						break;
+					}
+					
+					if (prime(pos)) {
+						done = true;
+						if (pos + 6 <= 52) {
+							int counter = 1;
+							boolean move = false;
+							while (gameboard[pos + counter - 1] == 0 && counter < 6) {
+								counter++;
+								move = true;
+							}
+							if (move) {
+								pos += counter - 1;
+								countcorr++;
+							}
+						}
+					}
+					
+					if (perfsq(pos)) {
+						done = true;
+						int counter = 1;
+						boolean move = false;
+						while (gameboard[pos - counter - 1] == 0 && counter < 6) {
+							counter++;
+							move = true;
+						}
+						if (move) {
+							pos -= counter - 1;
+							countcorr++;
+						}
+					}
+					
+					if (!done) {
+						pos -= movestep;
+						
+						if (xedge(lower, pos + movestep)) {
+							int temp = corner[marker];
+							pos = finalcond(temp, movestep, pos);
+							continue;
+						}
+						pos += movestep;
+					}
+				}
+				player.add(pos);
+				Collections.sort(player);
+			}
+			
+			System.out.print("Output " + a + ". ");
+			
+			for (int j = 0; j < player.size(); j++) {
+				System.out.print(player.get(j) + " ");
+			}
+			System.out.println();
+		}
+	}
+	
+	public static boolean full(int n) {
+		if (gameboard[n] == 0)
+			return false;
+		return true;
+	}
+
+	public static boolean prime(int n) {
+		int primes[] = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47 };
+		for (int j = 0; j < 15; j++) {
+			if (n == primes[j])
+				return true;
+		}
+		return false;
+	}
+
+	public static boolean perfsq(int n) {
+		int perfsquares[] = { 9, 16, 25, 36, 49 };
+		for (int j = 0; j < 5; j++) {
+			if (n == perfsquares[j])
+				return true;
+		}
+		return false;
+	}
+
+	public static boolean xedge(int bott, int high) {
+		for (int j = 0; j < 9; j++) {
+			if (bott < corner[j] && high > corner[j]) {
+				marker = j;
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static int finalcond(int pos, int movestep, int start) {
+		for (int j = pos; j <= start + movestep; j++) {
+			if (j % movestep == 0 && gameboard[j - 1] == 0)
+				return j;
+		}
+		return start;
+	}
+}
